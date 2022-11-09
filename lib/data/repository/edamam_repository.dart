@@ -7,9 +7,9 @@ class EdamamRepository {
   final EdamamApi edamamApi;
   EdamamRepository(this.edamamApi);
 
-  Future<EdamamModel> getRecipeRequested({String? ingredients}) async {
+  Future<EdamamModel> getRecipeRequested({String? ingredient}) async {
     try {
-      final res = await edamamApi.getRecipe(q: ingredients);
+      final res = await edamamApi.getRecipe(q: ingredient);
       final EdamamModel edamamModel = EdamamModel.fromJson(res.data);
       return edamamModel;
     } on DioError catch (e) {

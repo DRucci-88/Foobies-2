@@ -9,7 +9,23 @@ class HealthPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('HealthPage'),
       ),
-      body: Container(child: Text('HealthPage ')),
+      body: Container(
+          child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 2, // 20%
+            child: Container(color: Colors.red),
+          ),
+          Expanded(
+            flex: 6, // 60%
+            child: Container(color: Colors.green),
+          ),
+          Expanded(
+            flex: 2, // 20%
+            child: Container(color: Colors.blue),
+          )
+        ],
+      )),
     );
   }
 }

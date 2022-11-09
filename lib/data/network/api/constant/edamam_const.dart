@@ -25,5 +25,4 @@ class EdamamConst {
 /// https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=ea1d37d5&app_key=fd382a172ba8d6668c0430dc9c14a181
 /// https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=3f4f310f&app_key=a3fd0d28cd6a2b5c664de96da482a7c1
 /// 
-/// https://www.canva.com/design/DAFRK-a5rME/KcfQGgHfTUpQZ__4CHy7bA/view?utm_content=DAFRK-a5rME&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 /// 

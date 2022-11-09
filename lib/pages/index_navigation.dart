@@ -28,17 +28,6 @@ class _IndexNavigationState extends State<IndexNavigation> {
 
   @override
   void initState() {
-    edamamRepository.getRecipeRequested(ingredients: 'chicken').then((value) {
-      if (value.count! >= 0) {
-        print('PASTI KOSONG');
-      }
-      value.hits?.forEach((hit) {
-        print(hit.recipe?.label);
-      });
-      if (value.hits == null) {
-        print('KOSONG HITS NYA');
-      }
-    });
     super.initState();
   }
 

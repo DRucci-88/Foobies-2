@@ -16,7 +16,7 @@ class EdamamModel {
   });
 
   factory EdamamModel.fromJson(Map<String, dynamic> json) {
-    print(json);
+    // print(json);
     return EdamamModel(
       from: json['from'],
       to: json['to'],
