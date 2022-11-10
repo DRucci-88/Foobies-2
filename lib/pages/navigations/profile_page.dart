@@ -8,8 +8,26 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ProfilePage'),
+        backgroundColor: Colors.red,
       ),
-      body: const Text('ProfilePage '),
+      body: Center(
+          child: SizedBox(
+        width: double.infinity,
+        height: 400,
+        child: Column(
+          children: const [
+            Icon(
+              Icons.person,
+              size: 216,
+            ),
+            Text(
+              'Norbertus Dewa Rucci',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 48),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

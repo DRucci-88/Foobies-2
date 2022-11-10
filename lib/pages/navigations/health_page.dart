@@ -50,28 +50,28 @@ class _HealthPageState extends State<HealthPage> {
               ),
             ),
           ),
-          Center(
-            child: Card(
-              child: InkWell(
-                onTap: () => '',
-                child: Container(
-                  width: 300,
-                  height: 250,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('bmr.png'),
-                    ),
-                  ),
-                  alignment: Alignment.bottomLeft,
-                  padding: const EdgeInsets.all(8.0),
-                  child: const Text(
-                    'BMR Result',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Center(
+          //   child: Card(
+          //     child: InkWell(
+          //       onTap: () => '',
+          //       child: Container(
+          //         width: 300,
+          //         height: 250,
+          //         decoration: const BoxDecoration(
+          //           image: DecorationImage(
+          //             image: AssetImage('bmr.png'),
+          //           ),
+          //         ),
+          //         alignment: Alignment.bottomLeft,
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: const Text(
+          //           'BMR Result',
+          //           style: TextStyle(fontSize: 24),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ]),
       ),
     );

@@ -63,8 +63,8 @@ class RecipeDetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          recipe.dishType!
-                              .fold('', (prev, element) => prev += element),
+                          recipe.dishType!.fold(
+                              '', (prev, element) => prev += '. $element'),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,

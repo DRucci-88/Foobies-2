@@ -12,8 +12,8 @@ class IndexNavigation extends StatefulWidget {
 }
 
 class _IndexNavigationState extends State<IndexNavigation> {
-  // final ValueNotifier<int> _currentIndexNavigation = ValueNotifier(0);
-  int _currentIndexNavigation = 2;
+  
+  int _currentIndexNavigation = 0;
 
   List<Widget> pages = const [
     HomePage(),

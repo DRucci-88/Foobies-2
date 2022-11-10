@@ -33,38 +33,38 @@ class _HomePageState extends State<HomePage> {
               child: Text('Foods', style: TextStyle(fontSize: 28)),
             ),
             const SizedBox(height: 8.0),
-            // FutureBuilder(
-            //   future:
-            //       Provider.of<HomeProvider>(context, listen: false).homeInitial(
-            //     ingredient: 'Chicken',
-            //     onError: (errorMsg) => _errorSnackBar(context, errorMsg),
-            //   ),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.connectionState == ConnectionState.waiting) {
-            //       return const Center(child: CircularProgressIndicator());
-            //     }
-            //     if (snapshot.error != null) {
-            //       return const Center(child: Text('An Error Occured'));
-            //     }
-            //     return Consumer<HomeProvider>(
-            //       builder: (context, value, child) {
-            //         if (value.homeEdamam == null ||
-            //             value.homeEdamam!.count! <= 0) {
-            //           return const Center(
-            //             child: Text('Zero Result'),
-            //           );
-            //         }
-            //         // value.homeEdamam!.hits![0].recipe!.nutrients!.forEach(
-            //         //   (key, value) => print(key),
-            //         // );
-            //         print('Recipe Carousel Slider');
-            //         return const Expanded(
-            //           child: RecipeCarouselSlider(),
-            //         );
-            //       },
-            //     );
-            //   },
-            // ),
+            FutureBuilder(
+              future:
+                  Provider.of<HomeProvider>(context, listen: false).homeInitial(
+                ingredient: 'Chicken',
+                onError: (errorMsg) => _errorSnackBar(context, errorMsg),
+              ),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.error != null) {
+                  return const Center(child: Text('An Error Occured'));
+                }
+                return Consumer<HomeProvider>(
+                  builder: (context, value, child) {
+                    if (value.homeEdamam == null ||
+                        value.homeEdamam!.count! <= 0) {
+                      return const Center(
+                        child: Text('Zero Result'),
+                      );
+                    }
+                    // value.homeEdamam!.hits![0].recipe!.nutrients!.forEach(
+                    //   (key, value) => print(key),
+                    // );
+                    print('Recipe Carousel Slider');
+                    return const Expanded(
+                      child: RecipeCarouselSlider(),
+                    );
+                  },
+                );
+              },
+            ),
           ],
         ),
       ),
