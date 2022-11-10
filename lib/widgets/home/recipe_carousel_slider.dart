@@ -27,8 +27,6 @@ class RecipeCarouselSlider extends StatelessWidget {
     return CarouselSlider.builder(
       itemCount: hits.length,
       itemBuilder: (context, index, realIndex) {
-        print(index);
-        print(realIndex);
         return SizedBox(
           height: 500,
           child: RecipeCardItem(
@@ -53,7 +51,7 @@ class RecipeCarouselSlider extends StatelessWidget {
         scrollDirection: Axis.vertical,
         // autoPlay: true,
         onPageChanged: (index, reason) {
-          print(index);
+          // print(index);
         },
       ),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foobies_app/di/service_locator.dart';
 import 'package:foobies_app/pages/index_navigation.dart';
-import 'package:foobies_app/pages/recipe_detail_page.dart';
+import 'package:foobies_app/providers/cook_provider.dart';
+import 'package:foobies_app/providers/health_bmi_provider.dart';
 import 'package:foobies_app/providers/home_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => CookProvider()),
+        ChangeNotifierProvider(create: (_) => HealthBMIProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

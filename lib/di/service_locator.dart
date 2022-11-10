@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:foobies_app/data/network/api/edamam_dio_client.dart';
-import 'package:foobies_app/data/network/api/user/edamam_api.dart';
+import 'package:foobies_app/data/network/api/edamam/edamam_api.dart';
 import 'package:foobies_app/data/repository/edamam_repository.dart';
 import 'package:get_it/get_it.dart';
 

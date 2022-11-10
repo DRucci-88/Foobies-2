@@ -5,15 +5,17 @@ class Recipe {
   String? uri;
   String? label;
   String? image;
-  String? imageThumbnail;
-  String? imageRegular;
+  // String? imageThumbnail;
+  // String? imageRegular;
   String? source;
   String? url;
   double? serving;
+  List<String>? dietLabels;
   List<String>? healthLabels;
   List<Ingredients>? ingredients;
   double? calories;
   double? totalWeight;
+  double? totalTime;
   List<String>? cuisineType;
   List<String>? mealType;
   List<String>? dishType;
@@ -34,15 +36,17 @@ class Recipe {
     this.uri,
     this.label,
     this.image,
-    this.imageThumbnail,
-    this.imageRegular,
+    // this.imageThumbnail,
+    // this.imageRegular,
     this.source,
     this.url,
     this.serving,
+    this.dietLabels,
     this.healthLabels,
     this.ingredients,
     this.calories,
     this.totalWeight,
+    this.totalTime,
     this.cuisineType,
     this.mealType,
     this.dishType,
@@ -64,11 +68,12 @@ class Recipe {
       uri: json['uri'],
       label: json['label'],
       image: json['image'],
-      imageThumbnail: json['images']['THUMBNAIL']['url'],
-      imageRegular: json['images']['REGULAR']['url'],
+      // imageThumbnail: json['images']['THUMBNAIL']['url'],
+      // imageRegular: json['images']['REGULAR']['url'],
       source: json['source'],
       url: json['url'],
       serving: json['yield'],
+      dietLabels: (json['dietLabels'] as List).map((e) => e as String).toList(),
       healthLabels:
           (json['healthLabels'] as List).map((e) => e as String).toList(),
       ingredients: (json['ingredients'] as List)
@@ -76,6 +81,7 @@ class Recipe {
           .toList(),
       calories: json['calories'],
       totalWeight: json['totalWeight'],
+      totalTime: json['totalTime'],
       cuisineType:
           (json['cuisineType'] as List).map((e) => e as String).toList(),
       mealType: (json['mealType'] as List).map((e) => e as String).toList(),

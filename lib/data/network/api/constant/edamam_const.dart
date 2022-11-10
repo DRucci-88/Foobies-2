@@ -5,6 +5,9 @@ class EdamamConst {
   static const appid = 'ea1d37d5';
   static const appkey = 'fd382a172ba8d6668c0430dc9c14a181';
 
+  // Contoh Trigger Edamam Dio Exception dg return 'Unauthorized'
+  // static const appkey = 'fd382a172ba8d6668c0430dc9c14a18';
+
   // final appid = '3f4f310f';
   // final appkey = 'a3fd0d28cd6a2b5c664de96da482a7c1';
 

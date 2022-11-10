@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foobies_app/data/repository/edamam_repository.dart';
-import 'package:foobies_app/di/service_locator.dart';
 import 'package:foobies_app/pages/navigations/health_page.dart';
 import 'package:foobies_app/pages/navigations/home_page.dart';
 import 'package:foobies_app/pages/navigations/cook_page.dart';
@@ -15,7 +13,7 @@ class IndexNavigation extends StatefulWidget {
 
 class _IndexNavigationState extends State<IndexNavigation> {
   // final ValueNotifier<int> _currentIndexNavigation = ValueNotifier(0);
-  int _currentIndexNavigation = 0;
+  int _currentIndexNavigation = 2;
 
   List<Widget> pages = const [
     HomePage(),
@@ -24,10 +22,9 @@ class _IndexNavigationState extends State<IndexNavigation> {
     ProfilePage()
   ];
 
-  EdamamRepository edamamRepository = getIt.get<EdamamRepository>();
-
   @override
   void initState() {
+    print('Index Navigation');
     super.initState();
   }
 

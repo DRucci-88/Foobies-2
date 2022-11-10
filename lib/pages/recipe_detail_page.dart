@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foobies_app/data/models/edamam/recipe.dart';
-import 'package:foobies_app/providers/home_provider.dart';
-import 'package:provider/provider.dart';
 
 /// Appbar: Title
 /// Image URL Reguler
@@ -12,15 +10,15 @@ import 'package:provider/provider.dart';
 ///
 
 class RecipeDetailPage extends StatelessWidget {
-  const RecipeDetailPage({super.key, required this.index});
+  const RecipeDetailPage({
+    super.key,
+    required this.recipe,
+  });
 
-  final int index;
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context, listen: false);
-    final Recipe recipe = homeProvider.findRecipeById(index);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Recipe Detail'),
@@ -50,7 +48,7 @@ class RecipeDetailPage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width * 0.5,
-                    maxHeight: 80,
+                    maxHeight: 100,
                   ),
                   decoration: const BoxDecoration(
                     color: Colors.black45,
@@ -65,16 +63,36 @@ class RecipeDetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          recipe.dishType![0],
-                          style: const TextStyle(color: Colors.white),
+                          recipe.dishType!
+                              .fold('', (prev, element) => prev += element),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
                         ),
                         Text(
-                          recipe.mealType![0],
-                          style: const TextStyle(color: Colors.white),
+                          recipe.mealType!
+                              .fold('', (prev, element) => prev += element),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
                         ),
                         Text(
-                          recipe.cuisineType![0],
-                          style: const TextStyle(color: Colors.white),
+                          recipe.cuisineType!
+                              .fold('', (prev, element) => prev += element),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          recipe.dietLabels!
+                              .fold('', (prev, element) => prev += element),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
                         ),
                       ],
                     ),
@@ -91,15 +109,15 @@ class RecipeDetailPage extends StatelessWidget {
                 SizedBox.fromSize(
                   size: const Size(80, 56),
                   child: Column(children: [
-                    Icon(Icons.person),
-                    Text('4 servings'),
+                    const Icon(Icons.person),
+                    Text('${recipe.serving} servings'),
                   ]),
                 ),
                 SizedBox.fromSize(
                   size: const Size(80, 56),
                   child: Column(children: [
-                    Icon(Icons.timelapse),
-                    Text('4 servings'),
+                    const Icon(Icons.timelapse),
+                    Text('${recipe.totalTime} mins'),
                   ]),
                 )
               ],
@@ -112,16 +130,16 @@ class RecipeDetailPage extends StatelessWidget {
                 SizedBox.fromSize(
                   size: const Size(80, 56),
                   child: Column(children: [
-                    Icon(Icons.monitor_weight),
-                    Text('1825 g'),
+                    const Icon(Icons.monitor_weight),
+                    Text('${recipe.totalWeight!.toStringAsFixed(2)} g'),
                   ]),
                 ),
                 SizedBox.fromSize(
                   size: const Size(80, 56),
                   child: Column(children: [
-                    Icon(Icons.fastfood),
+                    const Icon(Icons.fastfood),
                     Text(
-                      '3003 calories',
+                      '${recipe.calories!.toStringAsFixed(2)} calories',
                       textAlign: TextAlign.center,
                     ),
                   ]),
@@ -139,7 +157,7 @@ class RecipeDetailPage extends StatelessWidget {
                 'Ingredients (${recipe.ingredients!.length.toString()})',
               ),
             ),
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < recipe.ingredients!.length; i++)
               ListTile(
                 leading: Container(
                   width: 56,
@@ -156,7 +174,8 @@ class RecipeDetailPage extends StatelessWidget {
                   ),
                 ),
                 title: Text(recipe.ingredients![i].text!),
-                subtitle: Text('${recipe.ingredients![i].weight} grams'),
+                subtitle: Text(
+                    '${recipe.ingredients![i].weight!.toStringAsFixed(2)} grams'),
               )
             // ListView.separated(
             //   itemBuilder: (context, index) {

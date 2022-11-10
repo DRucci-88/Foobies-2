@@ -21,9 +21,18 @@ class HomeProvider with ChangeNotifier {
     return _homeEdamam!.hits![index].recipe!;
   }
 
-  Future<void> homeInitial({required String ingredient}) async {
-    _homeEdamam =
-        await _edamamRepository.getRecipeRequested(ingredient: ingredient);
+  Future<void> homeInitial({
+    required String ingredient,
+    required void Function(String errorMsg) onError,
+  }) async {
+    try {
+      _homeEdamam = await _edamamRepository.getRecipeByIngredient(
+        ingredient: ingredient,
+      );
+    } catch (e) {
+      onError(e.toString());
+    }
+
     notifyListeners();
   }
 

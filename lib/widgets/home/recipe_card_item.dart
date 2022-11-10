@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foobies_app/data/models/edamam/nutrient.dart';
 import 'package:foobies_app/pages/recipe_detail_page.dart';
+import 'package:foobies_app/providers/home_provider.dart';
+import 'package:provider/provider.dart';
 // import '';
 
 class RecipeCardItem extends StatelessWidget {
@@ -35,7 +37,9 @@ class RecipeCardItem extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return RecipeDetailPage(index: index);
+                      final recipe = Provider.of<HomeProvider>(context)
+                          .findRecipeById(index);
+                      return RecipeDetailPage(recipe: recipe);
                     },
                   ),
                 );

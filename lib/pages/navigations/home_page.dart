@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        backgroundColor: Colors.orange,
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0),
@@ -32,65 +33,47 @@ class _HomePageState extends State<HomePage> {
               child: Text('Foods', style: TextStyle(fontSize: 28)),
             ),
             const SizedBox(height: 8.0),
-            FutureBuilder(
-              future: Provider.of<HomeProvider>(context, listen: false)
-                  .homeInitial(ingredient: 'Chicken'),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.error != null) {
-                  return const Center(child: Text('An Error Occured'));
-                }
-                return Consumer<HomeProvider>(
-                  builder: (context, value, child) {
-                    if (value.homeEdamam == null ||
-                        value.homeEdamam!.count! <= 0) {
-                      return const Center(
-                        child: Text('Zero Result'),
-                      );
-                    }
-                    value.homeEdamam!.hits![0].recipe!.nutrients!.forEach(
-                      (key, value) => print(key),
-                    );
-                    print('Recipe Carousel Slider');
-                    return const Expanded(
-                      child: RecipeCarouselSlider(),
-                    );
-                  },
-                );
-              },
-            ),
+            // FutureBuilder(
+            //   future:
+            //       Provider.of<HomeProvider>(context, listen: false).homeInitial(
+            //     ingredient: 'Chicken',
+            //     onError: (errorMsg) => _errorSnackBar(context, errorMsg),
+            //   ),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.connectionState == ConnectionState.waiting) {
+            //       return const Center(child: CircularProgressIndicator());
+            //     }
+            //     if (snapshot.error != null) {
+            //       return const Center(child: Text('An Error Occured'));
+            //     }
+            //     return Consumer<HomeProvider>(
+            //       builder: (context, value, child) {
+            //         if (value.homeEdamam == null ||
+            //             value.homeEdamam!.count! <= 0) {
+            //           return const Center(
+            //             child: Text('Zero Result'),
+            //           );
+            //         }
+            //         // value.homeEdamam!.hits![0].recipe!.nutrients!.forEach(
+            //         //   (key, value) => print(key),
+            //         // );
+            //         print('Recipe Carousel Slider');
+            //         return const Expanded(
+            //           child: RecipeCarouselSlider(),
+            //         );
+            //       },
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),
     );
   }
 
-  // Widget _buildCarouselSlider(BuildContext context, List<Hit> hits) {
-  //   return CarouselSlider.builder(
-  //     itemCount: hits.length,
-  //     itemBuilder: (context, index, realIndex) {
-  //       print(index);
-  //       print(realIndex);
-  //       return SizedBox(
-  //         height: 500,
-  //         child: RecipeCardItem(hit: hits[index]),
-  //         // child: Text(index.toString()),
-  //       );
-  //     },
-  //     options: CarouselOptions(
-  //       viewportFraction: 0.7,
-  //       autoPlayCurve: Curves.easeInOutCubic,
-  //       autoPlayInterval: const Duration(seconds: 4),
-  //       autoPlayAnimationDuration: const Duration(seconds: 2),
-  //       enlargeCenterPage: true,
-  //       scrollDirection: Axis.vertical,
-  //       // autoPlay: true,
-  //       onPageChanged: (index, reason) {
-  //         print(index);
-  //       },
-  //     ),
-  //   );
-  // }
+  void _errorSnackBar(BuildContext context, String errorMsg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(errorMsg)),
+    );
+  }
 }
